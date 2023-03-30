@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+{% load i18n %}
+<html>
+	<head>
+	<meta charset="utf-8">
+	<title>Can Benli | {% trans "Industrial Engineer | Data Scientist"%}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+ 
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/animate.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/touchTouch.css">
+  <link rel="icon" href="/media/img/icon_logo.png">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+	</head>
+	<body>
+    <header class="header_area">
+      <div class="main_header_area animated">
+        <div class="container">
+          <nav id="navigation1" class="navigation">
+            <div class="nav-header">
+              <a class="nav-brand" href="/"><img src="/media/img/logo.png" width="190px" alt="logo"/></a>
+              <div class="nav-toggle"></div>
+            </div>
+            
+            <div class="nav-menus-wrapper">
+              <ul class="nav-menu align-to-right">
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles">Articles</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li class="">
+                  <a href="#">Last Articles</a>
+                  <div class="megamenu-panel">
+                    <div class="megamenu-lists">
+                      
+                      <ul class="megamenu-list ">
+                        {% for post in postsh %}
+                        <li class="postheader-w"><a href="{% url 'blog_single' post.slug %}">
+                          <div class="postheader">
+                            <img class="hidden-div" src="{{post.image.url}}" alt="post"/>
+                            <p style="font-size:16px; color:#000;margin-bottom:0"><strong>{{post.title}}</strong></p>
+                          </div>
+                        </a></li>
+                        {% endfor %}
+                    
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+                <li class="hidden-div">
+                  <a href="#">Last Web Projects</a>
+                  <div class="megamenu-panel">
+                    <div class="megamenu-lists">
+                     
+                
+                
+                      <ul class="megamenu-list">
+                        {% for work in portfolioh %}
+                        <li><a href="{{work.adres}}" target="_blank">
+                          <div class="postheader">
+                              <img src="{{work.image.url}}" alt="project"/>                
+                          </div>
+                        </a></li>{%endfor%}
+                        
+                        
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+                
+                <li><a href="/contact">Contact</a></li>
+                <li>
+                  <a href="#">Language</a>
+                  <ul class="nav-dropdown">
+                    <li><a href="{% url 'set-language' 'en' %}"><img src="/media/image/en.png" alt="" width="18px">&nbsp&nbsp English</a></li>
+                    <li><a href="{% url 'set-language' 'tr' %}"><img src="/media/image/tr.png" alt="" width="18px">&nbsp&nbsp Türkçe</a></li>
+                                
+                  </ul>
+                </li>
+                
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <!-- Intro -->
+	<div id="inner-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 pull-right ">
+						<h1 class="inner-heading"><span>{% trans "Choose a job you love,"%}</span> {% trans "and you will never have to work a day in your life."%}
+                         </h1>
+						<div class="text-inner">{% trans "PROJECTS"%}</div>
+					</div>
+				</div>
+			</div>
+	</div>
+    <!-- /Intro -->
+    
+       
+    <div class="container">
+           <div class="row">
+             <div class="line-symbol"></div>
+           </div>
+     </div>
+     
+        
+     <!-- Masonry -->
+     <div class="container grid">
+      <div class="row">
+                     
+         <div id="photos"> 
+             
+          {% for work in portfolio %}
+          <figure class="effect-julia">
+              <img src="{{work.image.url}}" alt="project"/>
+              <figcaption>
+                  <div>
+                      <p>{{work.name}} </p><br>
+                      <p style="font-size: 12px ;">{{work.category}} | {{work.date}}</p><br>
+                      <p style="font-size: 12px ; padding-right: 20px;"><a href="{{work.adres}}" target="_blank">{% trans "Review the project"%}</a></p>
+                   </div>
+              </figcaption>	
+             <div class="block1 xhidden">
+                 <div class="text">{{work.name}}</div></a>
+                 <div class="text" style="font-size: 12px ;  text-transform: uppercase;"><strong>{{work.category}} | {{work.date}} </strong></div>
+                 
+                 <div class="story"><a href="{{work.adres}}">{% trans "Review the project"%}</a></div>
+                 </div>		
+          </figure>
+          {%endfor%}
+
+           
+           
+       </div>
+
+          </div> 
+      </div>
+  </div><!-- /container -->
+     
+ 
+     
+     <!-- Line -->
+     <div class="container">
+           <div class="row">
+             <div class="line-symbol1"></div>
+           </div>
+     </div>
+     
+
+    
+
+   <!-- Footer-->
+   <footer>
+    <div class="container">
+      <div class="row" style="text-align: center;">
+        <div class="col-md-3 col-sm-3">
+        </div>
+        <div class="col-md-6 col-sm6 section-bg-color" >
+          <div class="row">
+            <div class="col-sm-6">
+              <h2 style="text-align: center;">{% trans "Info"%}</h2>
+              <p>{% trans "Address"%}: Ankara, Turkey</p>
+              <p>Email: canbenlibusiness@gmail.com</p>
+            </div><!-- /col-sm-9 -->
+            <div class="col-sm-6">
+              <h2 style="text-align: center;">{% trans "Socials"%}</h2>
+              <p><a href="https://www.linkedin.com/in/mcanbenli/" target="_blank">Linkedin</a></p>
+              <p><a href="https://github.com/canbenli" target="_blank">Github</a></p>
+              <p><a href="https://www.kaggle.com/canbenli" target="_blank">Kaggle</a></p>
+          </div><!-- /col-sm-9 -->
+          </div><!--/row-->
+        </div><!-- /col-sm-6 -->
+        <div class="col-md-3 col-sm-3 section-bg-color1">
+          <div class="row">
+            <div class="col-sm-12"><br>
+            <h3>2022 &copy; Can Benli</h3>
+            </div><!-- /col-sm-9 -->
+          </div><!--/row-->
+        </div><!-- /col-sm-3 -->
+      </div><!-- /row -->
+    </div><!-- /container -->
+  </footer><!-- /footer -->   
+     
+      
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery-1.11.0.js"></script>
+    <script src="/static/js/masonry.js"></script>
+    <script src="/static/js/nav.js"></script>
+    <script src="/static/js/script.js"></script>
+    <script src="/static/js/smoothscroll.js"></script>
+    <script src="/static/js/touchTouch.jquery.js"></script>
+    <script src="/static/js/wow.js"></script>
+    <script src="/static/js/header.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src="https://kit.fontawesome.com/20583e3abd.js" crossorigin="anonymous"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js" integrity="sha512-BdHyGtczsUoFcEma+MfXc71KJLv/cd+sUsUaYYf2mXpfG/PtBjNXsPo78+rxWjscxUYN2Qr2+DbeGGiJx81ifg==" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
+
+    
+     <script>
+     new WOW().init();
+     </script>
+
+	</body>
+</html>
+

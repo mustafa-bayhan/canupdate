@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+{% load i18n %}
+<html lang="en">
+	<head>
+	<meta charset="utf-8">
+	<title>Can Benli | {% trans "Industrial Engineer | Data Scientist"%}</title>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Can Benli, Digitization, data analysis, web programming, frontend, Html, Css, Javascript, Seo, Industrial Engineering, Dijitalleştirme, veri analizi, web programlama, önyüz, Html, Css, Javascript, Seo, Endüstri Mühendisliği" name="keywords">
+    <meta content="Can Benli. Ambitious and motivated young industrial engineering student with a qualified knowledge and passion to learn more about engineering." name="description">
+
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/animate.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/touchTouch.css">
+    <link rel="icon" href="/media/img/icon_logo.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+	</head>
+	<body>
+
+
+    <header class="header_area">
+      <div class="main_header_area animated">
+        <div class="container">
+          <nav id="navigation1" class="navigation">
+            <div class="nav-header">
+              <a class="nav-brand" href="/"><img src="/media/img/logo.png" width="190px" alt="logo"/></a>
+              <div class="nav-toggle"></div>
+            </div>
+            
+            <div class="nav-menus-wrapper">
+              <ul class="nav-menu align-to-right">
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles">Articles</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li class="">
+                  <a href="#">Last Articles</a>
+                  <div class="megamenu-panel">
+                    <div class="megamenu-lists">
+                      
+                      <ul class="megamenu-list ">
+                        {% for post in postsh %}
+                        <li class="postheader-w"><a href="{% url 'blog_single' post.slug %}">
+                          <div class="postheader">
+                            <img class="hidden-div" src="{{post.image.url}}" alt="post"/>
+                            <p style="font-size:16px; color:#000;margin-bottom:0"><strong>{{post.title}}</strong></p>
+                          </div>
+                        </a></li>
+                        {% endfor %}
+                    
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+                <li class="hidden-div">
+                  <a href="#">Last Web Projects</a>
+                  <div class="megamenu-panel">
+                    <div class="megamenu-lists">
+                     
+                
+                
+                      <ul class="megamenu-list">
+                        {% for work in portfolioh %}
+                        <li><a href="{{work.adres}}" target="_blank">
+                          <div class="postheader">
+                              <img src="{{work.image.url}}" alt="project"/>                
+                          </div>
+                        </a></li>{%endfor%}
+                        
+                        
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+                
+                <li><a href="/contact">Contact</a></li>
+                <li>
+                  <a href="#">Language</a>
+                  <ul class="nav-dropdown">
+                    <li><a href="{% url 'set-language' 'en' %}"><img src="/media/image/en.png" alt="" width="18px">&nbsp&nbsp English</a></li>
+                    <li><a href="{% url 'set-language' 'tr' %}"><img src="/media/image/tr.png" alt="" width="18px">&nbsp&nbsp Türkçe</a></li>
+                                
+                  </ul>
+                </li>
+                
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+ 	
+    <canvas class="background"></canvas>
+    
+    <div class="type-wrap">
+      <span id="typed" style="white-space:pre; text-transform:uppercase; font-weight:500;" class="typed">
+      </span>
+    </div>
+
+    <div class="container margin-top-50">
+      <div class="row">
+        <div class="line-symbol"></div>
+      </div>
+    </div>
+    <div class="container" style="padding:30px 0">
+      <div class="row">
+                  <div class="col-md-4" >
+                      <div class="images_pp" style="width:250px; ">
+                          <img class="profilep" src="{{resume.cv_resmi.url}}" alt="" >
+                      </div><br>
+                      <div class="info-skills" style="float: left;">
+                          <p><strong>{% trans "Name"%}:</strong> Muhammed Can Benli 
+                          <br><strong>{% trans "Profession"%}:</strong> {% trans "Industrial Engineer, Data Scientist"%} <br>  
+                            <strong> E-mail:</strong>  canbenlibusiness@gmail.com <br>
+
+                          </p>
+                          <p class="home-heading "><a href="{{resume.cv.url}}" download> <span> {% trans "Resume"%} (EN) &nbsp;<i class="bi bi-download"></i></span> </a></p>
+                              
+                      </div>
+                  </div>
+        <div class="col-md-8 pull-right  wow animated" style="padding:30px">
+          {{resume.body|safe}}
+                         <!--  <div class="text-home wow fadeInUp animated"><strong> <a href="#contact">Contact</a></strong></div>-->
+                      
+        </div>
+      </div>
+    </div>
+
+     <div class="container">
+           <div class="row">
+             <div class="line-symbol"></div>
+           </div>
+     </div>
+        <!-- Masonry -->
+       <div class="container grid">
+        <div class="row">
+           <div class="text-home "><strong>{% trans "Last Articles"%}</strong></div>
+           <a href="/articles"><p style="margin-top: -20px; font-size: 15px;">{% trans "Click to see all"%}</p></a>
+
+                       
+            <div id="photos"> 
+                {% for post in posts %}
+                 <figure class="effect-julia" style="margin: auto;">
+                    <a href="{% url 'blog_single' post.slug %}">
+                     <img src="{{post.image.url}}" alt="post"/>
+                     <div class="block1">
+                        <div class="text" style="font-size: 12px ;  text-transform: uppercase;">Can Benli</div>
+
+                        <div class="text" style="text-transform: uppercase;"> <strong>{{post.title}}</strong> </div></a>
+                        <div class="text" style="font-size: 15px ;  text-transform: uppercase; font-weight: 400;">{{post.category.name}}</div>
+                        <div class="text" style="font-size: 12px ;"><i class="fa-regular fa-eye"></i> {{post.read}} &nbsp;<i class="fa-regular fa-clock"></i> {{post.read_time}}</div>
+                        
+                        <div class="story"><a href="{% url 'blog_single' post.slug %}">{% trans "See the article"%}</a></div>
+                        </div>
+                    		
+                 </figure>
+                
+                 {% endfor %}
+                
+
+                 
+
+                 
+            </div>
+
+            </div> <!-- /Masonry -->
+     
+         </div><!-- /row -->
+     </div><!-- /container -->
+     
+     <div class="container" style="margin-top:100px">
+        <div class="row">
+          <div class="line-symbol"></div>
+        </div>
+  </div>
+       <!-- Masonry -->
+     <div class="container grid">
+      <div class="row">
+         <div class="text-home "><strong>{% trans "Projects"%}</strong></div>
+         <a href="/projects"><p style="margin-top: -20px;font-size: 15px;">{% trans "Click to see all"%}</p></a>
+                     
+         <div id="photos" > 
+             {% for work in portfolio %}
+             <figure class="effect-julia" style="margin: auto;"> 
+                 <img src="{{work.image.url}}" alt="project"/>
+                 <figcaption>
+                     <div>
+                         <p>{{work.name}} </p><br>
+                         <p style="font-size: 12px ;">{{work.category}} | {{work.date}}</p><br>
+                         <p style="font-size: 12px ; padding-right: 20px;"><a href="{{work.adres}}" target="_blank">{% trans "Review Project"%}</a></p>
+                      </div>
+                 </figcaption>	
+                  
+             </figure>
+             {%endfor%}
+             
+
+              
+            
+       </div>
+
+          </div> <!-- /Masonry -->
+
+
+
+
+        </div><!-- /row -->
+    </div><!-- /container -->
+     <!-- Line -->
+     <div class="container">
+           <div class="row">
+             <div class="line-symbol1"></div>
+           </div>
+     </div>
+     
+
+  
+  <!-- Contact info -->
+  <div class="container" id="contact" style="margin-bottom: 30px;">
+     <div class="row">
+        <div class="text-home"><strong><h2 class="text-home" style="text-align:center; padding-bottom: -20px;">{% trans "Contact"%}</h2></strong></div>
+       <div class="col-md-5 col-sm-5 contact-margin">
+         <h2 class="contact-heading">{% trans "Get in touch"%}</h2>
+         <p class="text-contact">{% trans "Contact via the form social media accounts or e-mail for business proposals, project ideas and collaboration."%}</p> 
+         <p><a href="https://www.linkedin.com/in/mcanbenli/" target="_blank">Linkedin</a></p>
+         <p><a href="https://github.com/canbenli" target="_blank">Github</a></p>
+         <p><a href="https://www.kaggle.com/canbenli" target="_blank">Kaggle</a></p>
+         <p><a href="mailto:canbenlibusiness@gmail.com">E-mail</a></p>
+
+
+
+        </div>
+       <div class="col-md-7 col-sm-7 contact-margin">
+        
+        <form method="post">
+            {% csrf_token %}
+                 <div class="control-group form-group">
+                     <div class="controls">
+                         <input  required value="{{name1}}" name="name" type="text" class="form-control" id="name" required placeholder="{% trans "Name"%}">
+                     </div>
+                 </div>
+                
+                 <div class="control-group form-group">
+                     <div class="controls">
+                         <input required value = "{{mail1}}" name="email" type="email" class="form-control" id="email" placeholder="E-mail">
+                     </div>
+                 </div>
+                 <div class="control-group form-group">
+                    <div class="controls">
+                        <input required value="{{number1}}" name="phone" type="tel" class="form-control" id="tel" placeholder="{% trans "Phone"%}">
+                    </div>
+                </div>
+                 <div class="control-group form-group">
+                     <div class="controls">
+                         <textarea required name="message" rows="10" cols="20" class="form-control" id="message" maxlength="999" placeholder="{% trans "Message"%}">{{comment1}}</textarea>
+                     </div>
+                 </div>
+                 <div id="success"></div>
+                 <div class="g-recaptcha" data-sitekey="6Ldp3UUlAAAAAPO6a36dTls-vas7dbBguXbVUk2X"></div>
+                 <div style = "color:red;">
+                  {% if error %}
+                      {% trans "Confirm that you are not a robot!"%}
+                  {% endif %}
+                 </div> 
+                  <button type="submit" class="contact-btn btn">{% trans "SEND"%}</button>
+                  
+             </form>
+       </div>
+     </div>
+  </div>
+  <!-- Contact info -->
+
+  <div class="container">
+    <div class="row">
+      <div class="line-symbol1"></div>
+    </div>
+</div>
+
+  
+    
+     <!-- Footer-->
+     <footer>
+      <div class="container">
+        <div class="row" style="text-align: center;">
+          <div class="col-md-3 col-sm-3">
+          </div>
+          <div class="col-md-6 col-sm6 section-bg-color" >
+            <div class="row">
+              <div class="col-sm-6">
+                <h2 style="text-align: center;">{% trans "Info"%}</h2>
+                <p>{% trans "Address"%}: Ankara, Turkey</p>
+                <p>Email: canbenlibusiness@gmail.com</p>
+              </div><!-- /col-sm-9 -->
+              <div class="col-sm-6">
+                <h2 style="text-align: center;">{% trans "Socials"%}</h2>
+                <p><a href="https://www.linkedin.com/in/mcanbenli/" target="_blank">Linkedin</a></p>
+                <p><a href="https://github.com/canbenli" target="_blank">Github</a></p>
+                <p><a href="https://www.kaggle.com/canbenli" target="_blank">Kaggle</a></p>
+            </div><!-- /col-sm-9 -->
+            </div><!--/row-->
+          </div><!-- /col-sm-6 -->
+          <div class="col-md-3 col-sm-3 section-bg-color1">
+            <div class="row">
+              <div class="col-sm-12"><br>
+              <h3>2022 &copy; Can Benli</h3>
+              </div><!-- /col-sm-9 -->
+            </div><!--/row-->
+          </div><!-- /col-sm-3 -->
+        </div><!-- /row -->
+      </div><!-- /container -->
+    </footer><!-- /footer -->   
+     
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery-1.11.0.js"></script>
+    <script src="/static/js/masonry.js"></script>
+    <script src="/static/js/nav.js"></script>
+    <script src="/static/js/script.js"></script>
+    <script src="/static/js/smoothscroll.js"></script>
+    <script src="/static/js/touchTouch.jquery.js"></script>
+    <script src="/static/js/wow.js"></script>
+    <script src="/static/js/header.js"></script>
+    <script src="/static/js/particles.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src="https://kit.fontawesome.com/20583e3abd.js" crossorigin="anonymous"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js" integrity="sha512-BdHyGtczsUoFcEma+MfXc71KJLv/cd+sUsUaYYf2mXpfG/PtBjNXsPo78+rxWjscxUYN2Qr2+DbeGGiJx81ifg==" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
+
+  
+	</body>
+</html>
+
+<script>
+  
+var particles;
+
+particles = Particles.init({
+  selector: ".background",
+  color: ["#46067d", "#364b86", "#09c1ff"],
+  connectParticles: true,
+  speed: 3
+});
+
+
+
+</script>
+
+<script>
+  $("#typed").typed({
+    strings: ["Industrial Engineer", "Data Scientist"],
+    typeSpeed: 100,
+    startDelay: 0,
+    backSpeed: 60,
+    backDelay: 2000,
+    loop: true,
+    cursorChar: "|",
+    contentType: 'html'
+  });
+  </script>
